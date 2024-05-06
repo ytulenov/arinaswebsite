@@ -23,12 +23,12 @@ const achievementsList = [
   {
     metric: "Bloomberg Challege: $1000000 virtual investments",
     value: "15000",
-    postfix: "$ Income",
+    postfix: "$ Income/Month",
   },
   {
     metric: "Distributed for Central Asia Club",
     value: "4000",
-    postfix: "$/year",
+    postfix: "$/Year",
   },
 ];
 
