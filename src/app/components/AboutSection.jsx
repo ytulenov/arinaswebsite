@@ -9,12 +9,16 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Sequelize</li>
-        <li>JavaScript</li>
-        <li>React</li>
+        <li>Python & R/RStudio</li>
+        <li>Stata & MS Office</li>
+        <li>Bloomberg Terminal</li>
+        <li>Thomson Reuters Eikon</li>
+        <li>Profitability & OBS Risk Analysis</li>
+        <li>Capital Adequacy & Liquidity Risk Analysis</li>
+        <li>Sovereign, Credit & Interest Risk Analysis</li>
+        <li>Budgeting & Data Analysis</li>
+        <li>Financial Audit & Reporting</li>
+        <li>Portfolio Management & Accounting</li>
       </ul>
     ),
   },
@@ -23,8 +27,9 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>Fullstack Academy of Code</li>
-        <li>University of California, Santa Cruz</li>
+        <li>New York University Abu Dhabi</li>
+        <li>New York University New York</li>
+        <li>New York University London</li>
       </ul>
     ),
   },
