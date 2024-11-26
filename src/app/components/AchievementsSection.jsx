@@ -26,7 +26,7 @@ const achievementsList = [
     postfix: "$ Income/Month",
   },
   {
-    metric: "Distributed for Central Asia Club",
+    metric: "Distributed for ",
     value: "4000",
     postfix: "$/Year",
   },
