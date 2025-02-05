@@ -42,7 +42,7 @@ export default async function Work({ params }: { params: { slug: string } }) {
             <Image
               src={image}
               alt={title || ''}
-              className='object-cover'
+              className='object-cover' 
               fill
             />
           </div>
