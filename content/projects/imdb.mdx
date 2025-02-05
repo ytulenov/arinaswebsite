@@ -1,0 +1,107 @@
+---
+title: What affects the IMDB rating of Movies? 
+summary: Study of key IMDB rating factors
+image: /images/projects/imdb.jpg
+author: 'Arina Kenbayeva and Joanna Kumendong'
+publishedAt: '2023-12-21'
+---
+
+This study's objective is to identify factors influencing IMDb ratings of movies, focusing on variables like release year, runtime, genres, votes, gross profit, certification, directors, and actors, using a dataset of the top 1,000 movies (1920–2020).
+
+## I. INTRODUCTION
+
+Every one of us, either by ourselves or with friends, has watched a movie in theaters or online. Many of us express impressions after the movie through discussing with others, engaging in online discourse, or seeking reviews by professional critiques. IMDB Ratings are collected by aggregating the votes of registered users. Therefore, this study aims to investigate how various factors such as number of votes, released year, certification, runtime, genres, and gross profit affect the success of movies, measured in terms of their IMDB ratings. Our study focused on analyzing the 1000 most exceptional films spanning the years 1920 to 2020, aiming to delineate distinct characteristics among top-performing movies. Employing Multiple Regression, Nonlinear Regression, and Time Fixed Effects models, our investigation yielded noteworthy findings. 
+
+Among the five models explored, the second model, encompassing all available variables, exhibited the highest R² at 0.77. Despite this, we made an informed decision to adopt the third model, which yielded a slightly lower adjusted R² of 0.76. This choice was motivated by our discovery of potential endogeneity in the second model, which could have led to misleading coefficients. 
+
+We acknowledge the commendable performance of our model, given the constraints of our dataset. However, our findings underscore the need for further enhancements. Specifically, augmenting the dataset with more extensive data and incorporating additional relevant variables would significantly strengthen our analysis. 
+
+## II. Significance of the Study 
+
+The cultivation theory, a sociological and communications framework, suggests that exposure to media shall inevitably shape viewers’ behavior and perception of the world (George Gerbner, 1960). The movies we watch provide us with a distraction from our problems, an opportunity to spend time with friends or family, or simply to enjoy the art of filmmaking. Many people revise their values and views of the world after watching. Someone takes motivation, someone on the contrary starts to get more concerned. The impact of movies on a person is certainly noticeable. And to choose a movie that is more likely not to disappoint, ratings help. 
+
+In terms of economic value, the production of movies requires many skilled workers who work in large groups for several years. Thus, employment for many people is ensured. Box office research firm Gower Street Analytics, in a preliminary draft of its annual forecast, says that worldwide cinema box office sales should weigh in at $33.4 billion for 2023. So as we can see, the industry is one of the most fast-growing and profitable. Therefore, the film industry and forecasting IMDB Ratings is an interesting field of study. 
+
+## II. Survey of the Literature 
+
+The research undertaken by Suman Basuroy, Subimal Chatterjee, and S. Abraham Ravid and published in 2003 came up with another empirical analysis to examine the significance of critical reviews in shaping the box office performance of films, aiming to ascertain the correlation between both positive and negative reviews and weekly box office revenue. Through six distinct hypotheses, it explores the multifaceted role of critics: as influencers in the initial weeks, as predictors in later stages or the entire run, and in potential dual roles as influencers and predictors throughout. The data, drawn from a sample of 200 films released between late 1991 and early 1993, encompass variables such as weekly domestic revenue, review valence, star power, budgets, and other control factors, including the presence of a sequel. For the analysis they use multiple linear regression. However, the study grapples with the challenge of biased estimates, notably when popular authors overshadow the influence of critics on a film's fate. The findings underscore the significant impact of early critical reviews on box office revenue, elucidating the critical role critics play as influencers and predictors. Additionally, variable stars emerge as potential mitigating factors, capable of tempering the consequences of negative reviews, acting as an insurance policy against critical backlash in an industry marked by unpredictability in success and review influence. While their consistent employment may not consistently amplify returns, their use could potentially shield films from critical censure. This study made us consider adding variable stars to our research. This essay helped our research to get a deeper understanding of how stars can play a huge role in the perception of the film by the audience and include this factor in our research. 
+
+Another useful resource was “Predicting Movies User Ratings with Imdb Attributes'’ by Ping-Yu Hsu, Yuan-Hong Shen, Xiang-An Xie, released in 2015. It provides the determinants and predictive factors influencing user ratings for movies in the digital age, driven by the potential for leveraging insights into future movie success by investors and production companies, given the positive correlation between movie ratings and box office performance. Employing a methodological triad encompassing linear combination, multiple linear regression, and neural networks, the study analyzes a robust dataset sourced from IMDb, comprising attributes spanning actors, directors, genres, release dates, budgets, and more, encompassing 32,968 movies released between 2002 and 2012. Through meticulous data cleaning processes that eliminate irrelevant or weakly relevant attributes based on prior research conclusions and IT scholars’ perspectives, the study refines its analysis, notably transforming continuous variables into categorical ones. The models' prediction errors consistently remain below 0.82, affirming their efficacy in forecasting user ratings, with neural networks emerging as the most accurate forecasting tool. However, despite these promising outcomes, the study acknowledges the need for further exploration of unexplored factors impacting user ratings. Additionally, the presence of potential endogenous relationships among these factors prompts suggestions for more comprehensive investigations to enhance understanding in subsequent studies. 
+
+In 2017, Ahmad et al took initiative to develop a mathematical model that predicts the success or failure of upcoming movies based on various attributes. The criteria for predicting movie success include elements such as budget, cast, crew (director, producer), filming locations, screenplay writer, release date, competition during release, music, release location, and target audience. The aim is to create a model that doesn't rely solely on individual attributes but instead explores the interrelation between these factors. The model's purpose is to assist the film industry in modifying movie criteria to enhance the likelihood of producing blockbuster hits. Additionally, it's envisioned as a tool for moviegoers to predict potential blockbusters before purchasing tickets. Each criterion is assigned a weight, determining its influence on the overall prediction; for instance, higher budgets might receive greater weight, while release dates could hold varying importance based on weekend releases or competition from other successful films. The project also delves into additional factors beyond those mentioned, employing simulation data to conduct this research. Accuracy of 85% has been observed in the project for predictions of movies yet to be released on the basis of the analysis. 
+
+Çağlıyor et al. employed three distinct machine learning algorithms—Random Forest, Gradient Boosting Tree, and Decision Tree—to not just forecast a movie's overall rating but also predict its count of user votes. Their dataset encompassed 8943 entries, and they applied Latent Dirichlet Allocation (LDA) to categorize movie plots into 20 distinct topics. These topics, alongside various independent variables such as genres, actors, release year, and country of origin, served as inputs for the classification methods mentioned earlier. The study evaluated performance using the Average Percentage Hit Rate (APHR). Results indicated that Gradient Boosting Tree outperformed other methods, showcasing a 1% margin over Random Forest and approximately 9% over Decision Tree. 
+
+Research “An Overview of Regression Methods in Early Prediction of Movie Ratings” made by Houmaan Chamani; Zhivar Sourati Hassan Zadeh; Behnam Bahrak in 2011 endeavors to predict movie ratings as a key success metric by employing multiple regression methods using metadata from over 450,000 featured movies sourced from IMDb. Focusing on pre-release data aims to aid movie producers and investors in making less risky decisions. Utilizing various regression techniques, including machine learning algorithms necessitating ample data for better model generalization, the study aims to create robust prediction models. The dataset, compiled from IMDb via the Scrapy platform until December 2020, spans approximately 458,000 titles from diverse periods (1894-2020). Preprocessing techniques involve dropping post-release features and limiting the dataset to movies produced in the USA after 1990, minimizing cultural differences' impact on ratings. The study suggests future exploration involving additional data sources like YouTube for trailer analysis, sentiment analysis on Twitter, and scrutiny of actors' social media engagement. Moreover, leveraging added features could enable accurate early predictions of movie return on investment (ROI), augmenting the assessment of movie success beyond ratings. This research is the latest and comparing it with other early research, we can see that this research does not use variables that are available only after release of the movie. Also it has an enormous data set compared with others. And they consider only US movies in its regression. Furthermore, they used techniques like Lasso and Ridge Regression or k-nearest neighbors, Support Vector Machine which we didn't notice in the previous papers. They have better results, since their estimation errors are smaller. 
+
+Bhave et al. introduced a holistic method for forecasting movie success. Compared with the previous research, they not only incorporated traditional movie attributes but also social aspects like Twitter sentiment analysis, YouTube trailer views, and Wikipedia edits linked to the movie pre-release. The study evaluated movie success through box office earnings and critics' ratings. Employing multivariate regression on these factors, they established a predictive model achieving a multiple R² value of 0.7057. 
+
+Unlike earlier studies that predominantly focused on specific aspects such as critical reviews, star power, or IMDb attributes, we aim to have a more holistic view on all the potential predictors of IMDB ratings. Additionally, our research's robust sample size of 1000 observations and its exclusive focus on the top films contribute to the depth and specificity of our findings, offering valuable insights that bridge gaps left by prior studies with smaller sample sizes or less comprehensive variable inclusion. 
+
+## III. Models 
+
+In our research, we built 3 different models, which are Multiple Regression Model, Nonlinear Regression Model, and Time Fixed Effects model. 
+
+### 1. Multiple Regression: 
+
+Multiple Regression model, also known simply as multiple regression, is a statistical technique that uses several explanatory variables to predict the outcome of a response variable. In our case, we used multiple regression models in our first 2 regressions. The difference between the first and second - we add more relevant variables to check if our adjusted R² would increase. 
+
+### 2. Non-linear Regression model: 
+
+Nonlinear regression is a curved function of an X variable (or variables in our case) that is used to predict a Y variable. We used it in our third model. After we found out that we have endogeneity in our second model, we decided to take the log of Gross in the 3rd model to solve the problem of misleading coefficients(reduce collinearity between Gross and Number of Votes). 
+
+### 3. Time Fixed Effects: 
+
+The Time Fixed Effects model serves to mitigate the omitted variable bias arising from excluding unobserved variables that evolve over time yet remain constant across entities. However, upon examining our results, the inclusion of Time-Fixed Effects in our model did not notably improve its performance. This suggests the absence of a singular omitted variable consistently present throughout the timeline. It is plausible that omitted variables exist, but they likely vary across different instances, indicating a diverse set of factors influencing our analysis. 
+
+
+## IV. Data 
+
+**Dependent Variable**: **IMDB Rating**
+
+**Independent Variables**:
+
+**a. Released Year**  
+   The year of a movie's release holds significance as ratings may fluctuate across different time periods owing to varying audience sizes contributing to the rating pool.  
+
+**b. Running Time (in minutes)**  
+   The duration or continuity of a film holds significance as it may influence ratings, particularly for viewers who have preferences regarding film length. Individuals might perceive films unfavorably if they're excessively brief or overly prolonged, impacting the overall rating.  
+
+**c. Genres**  
+   The chosen genre of a film plays a pivotal role in influencing its rating, as viewer preferences for particular genres significantly impact how the film is perceived and rated.
+
+<div style={{
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "20px"
+}}>
+<div style={{
+  border: "1px solid black",
+  padding: "10px",
+  maxWidth: "600px",
+  lineHeight: "1.8",
+  fontFamily: "Arial, sans-serif"
+}}>
+  (1) Drama &nbsp; (8) War &nbsp; (15) Sci-Fi &nbsp; (2) Crime &nbsp; (9) Romance &nbsp;<br />
+  (16) Animation &nbsp; (3) Action &nbsp; (10) Western &nbsp; (17) Sport &nbsp;<br />
+  (4) Thriller &nbsp; (11) History<br />
+  (5) European &nbsp; (12) Music<br />
+  (6) Fantasy &nbsp; (13) Family<br />
+  (7) Comedy &nbsp; (14) Horror
+</div>
+</div>
+
+**d. Number of Votes** 
+    The quantity of votes received by a chosen film serves as a reflection of audience engagement and reaction. A higher number of votes not only signifies broader audience participation but also contributes to a more accurate and impartial rating, mitigating potential biases.
+
+**e. Gross Profit** 
+    The revenue generated by a movie serves as an indicator of its financial success. However, relying solely on high profits as a measure of a film's success can be misleading. Factors like a captivating trailer or the involvement of popular actors may attract a large audience, leading to substantial earnings. Yet, this doesn't always correlate with a high rating, as audience perception and actual film quality might differ, potentially resulting in a lower rating despite significant revenue.
+
+**f. Certificate (Age Rating)** 
+    The "certificate" of a film typically refers to its rating or classification, which indicates the suitability of the movie for certain audiences based on content. This rating can vary from country to country and may include categories like G (General Audience/General Admission), PG (Parental Guidance suggested), PG-13 (Parents Strongly Cautioned for viewers under 13), R (Restricted), or others. This dataset was altered to group Age Restrictions as category A, unrestricted as category U, and partial restrictions as U/A, while the rest were unrated. These classifications often consider factors like violence, language, nudity, and other mature themes present in the film, aiming to guide viewers and parents on the appropriateness of the content for different age groups. It is hard to predict a direction of how a certificate would affect the film rating, since varied audience perspectives can lead to diverse reactions and rating overall. 
+
+**g. Directors**
+    The influence of different directors on a movie's rating can vary significantly. Diverse directorial styles, visions, and storytelling techniques can distinctly shape how audiences perceive and rate a film. 
+
+**h. Main Actor** 
+    The involvement of different actors can wield a significant influence on a movie's rating. Each actor brings their unique charisma, skill, and audience appeal, contributing distinctively to how a film is perceived and rated by viewers."
