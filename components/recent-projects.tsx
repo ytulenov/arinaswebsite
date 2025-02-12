@@ -12,7 +12,7 @@ export default async function RecentProjects() {
         <Projects projects={projects} />
 
         <Link
-          href='/projects'
+          href='/coursework'
           className='mt-8 inline-flex items-center gap-2 text-muted-foreground underline decoration-1 underline-offset-2 transition-colors hover:text-foreground'
         >
           <span>All coursework</span>

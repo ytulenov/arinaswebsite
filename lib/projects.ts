@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const rootDirectory = path.join(process.cwd(), 'content', 'projects')
+const rootDirectory = path.join(process.cwd(), 'content', 'coursework')
 
 export type Project = {
   metadata: ProjectMetadata
