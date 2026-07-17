@@ -104,11 +104,11 @@ We now provide an overview of the independent variables used in the analysis, wh
 
 **Financial and Macroeconomic Control Variables**
 
-To account for firm-specific characteristics and external economic conditions that may influence performance, we include a set of control variables grounded  in established empirical research. The selection of financial indicators is in- formed by Lee, Chen, and Ning (2017), who examine firm resilience during the  global financial crisis and identify key financial attributes associated with superior performance in times of economic stress. These indicators allow us to control for variations in capital structure, liquidity, profitability, and market valuation across firms. Specifically, we include **firm size, the debt-to-equity ratio, current  ratio, price-to-earnings ratio, R&D expenditures, revenue, market cap- italization, and price per share.**
+To account for firm-specific characteristics and external economic conditions that may influence performance, we include a set of control variables grounded  in established empirical research. The selection of financial indicators is informed by Lee, Chen, and Ning (2017), who examine firm resilience during the  global financial crisis and identify key financial attributes associated with superior performance in times of economic stress. These indicators allow us to control for variations in capital structure, liquidity, profitability, and market valuation across firms. Specifically, we include **firm size, the debt-to-equity ratio, current  ratio, price-to-earnings ratio, R&D expenditures, revenue, market capitalization, and price per share.**
 
-In addition, we control for **macroeconomic conditions** using annual data on **GDP**, the **CPI**, and the **Federal Funds Effective Rate**, all sourced from the FRED database. These variables contextualize firm performance within the broader economic environment and are essential for disentangling the effects of  firm-level decisions from macro-level shocks. A full list of control variables, in- cluding definitions and interpretation, is provided in Appendix A.
+In addition, we control for **macroeconomic conditions** using annual data on **GDP**, the **CPI**, and the **Federal Funds Effective Rate**, all sourced from the FRED database. These variables contextualize firm performance within the broader economic environment and are essential for disentangling the effects of  firm-level decisions from macro-level shocks. A full list of control variables, including definitions and interpretation, is provided in Appendix A.
 
-Cutler et al.(1991) demonstrate that macroeconomic factors account for ap- proximately one-third of the variation in stock returns. Therefore, incorporating  these indicators strengthens the robustness of our analysis by accounting for sys- temic factors that could influence firm outcomes—especially during periods of  economic instability.
+Cutler et al.(1991) demonstrate that macroeconomic factors account for approximately one-third of the variation in stock returns. Therefore, incorporating  these indicators strengthens the robustness of our analysis by accounting for systemic factors that could influence firm outcomes—especially during periods of  economic instability.
 
 This comprehensive set of financial and macroeconomic variables enhances our ability to isolate the effect of CEO age on firm performance while ensuring the model accounts for relevant internal and external forces.
 
@@ -121,7 +121,338 @@ are expressed as percentages. GDP, CPI, Firm Size, Revenue, and Market Capitaliz
 log-transformed. All other financial variables are annual and measured in U.S. dollars.</em>
 </div>
 
-Logarithmic transformations are applied to variables such as Firm Size, Rev- enue and Market Capitalization to address right-skewed distributions and enhance  comparability across firms. To ensure the reliability of our findings, we conduct sensitivity analyses to test the robustness of the results across different model specifications.
+Logarithmic transformations are applied to variables such as Firm Size, Revenue and Market Capitalization to address right-skewed distributions and enhance  comparability across firms. To ensure the reliability of our findings, we conduct sensitivity analyses to test the robustness of the results across different model specifications.
 
-## Ⅵ. Conclusion
+### 3.5 Sub-Sample Group definitions
 
+To further investigate the heterogeneity of the CEO age effect on firm performance, we split the sample by firm size and CEO age groupings. These definitions are used later in the regression analyses.
+
+Firms are categorized into small, medium, and large groups based on terciles of the firm size distribution, measured by the natural logarithm of the number of employees. As shown in Figure 1, firms with log(employees) ≤ 7.25 are classified as small, those with 7.25 < log(employees) < 8.75 as medium, and firms with log(employees) ≥ 8.75 as large. This corresponds approximately to firms with up to 1,408 employees in the small group, between 1,409 and 6,310 employees in the medium group, and more than 6,310 employees in the large group.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-2.png "title")
+  <em>*Note*: This histogram shows the distribution of firm size based on the natural logarithm of
+number of employees. Vertical lines represent tercile cutoffs used to define small, medium, and large firms.</em>
+</div>
+
+To further examine potential non-linearities in the relationship between CEO age and firm performance, we group CEOs into three age brackets based on the sample distribution. As detailed in Figure 2, CEOs aged 36 to 58 years are classified as young, those aged 59 to 65 years as middle-aged, and those aged 66 to 88 years as old. These terciles form the basis for age-specific sub-sample regressions used in later sections.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-3.png "title")
+  <em>*Note*: Distribution of CEO age across the sample. Tercile thresholds are used to define young, middle-aged, and old CEO categories.</em>
+</div>
+
+## 4. Methodology
+
+### 4.1 Overview
+
+This study utilizes a panel data Ordinary Least Squares (OLS) regression approach to examine the relationship between CEO age and firm financial performance, with particular attention to how this relationship varies during periods of economic crisis. The analysis covers publicly listed U.S. firms from 1997 to 2023, allowing for observation across multiple economic cycles. Crisis years are coded as a binary variable, where years classified as crises are assigned a value of 1, and all other years are coded as 0. The unit of analysis is the firm-year.
+
+The empirical strategy proceeds in two stages. First, we estimate an aggregate model using the full sample of firms and years to assess the average effect of CEO age on firm performance across the entire observation window. Second, to strengthen the robustness of the analysis and better understand the sources of heterogeneity, we conduct additional sub-sample regressions by splitting the data along key dimensions. These include sector, crisis period, firm size, and CEO age group. This two-stage approach enables us to identify the conditions under which the effect of CEO age is most pronounced and to contextualize our aggregate findings within a broader set of organizational and economic environments.
+
+### 4.2 Model Specifications
+
+The empirical model is estimated using panel data regression with industry and year fixed effects. The analysis focuses on three measures of firm performance — ROA, ROE, and EPS — capturing operational efficiency, shareholder returns,  and market-based profitability, respectively. All models use the same set of independent and control variables, with only the outcome variable varying across  specifications.
+
+The regression model is specified as follows:
+
+```math
+Y_{it} = \alpha + \beta_1 CEOAge_{it} + \beta_2 Crisis_t + \beta_3 \left(CEOAge_{it} \times Crisis_t\right) + \beta_4^{k} X_{itk} + \epsilon_{it}
+```
+
+The subscript **i** denotes the firm, **k** denotes the number of control variables and **t** denotes the year. The dependent variable $Y$ is separately specified as ROA, ROE or EPS in each regression model.
+
+The key independent variable is **CEO Age**, a continuous variable indicating the age of the CEO of firm $i$ in year $t$. **Crisis** is a binary variable equal to 1 for years identified as economic crises and 0 otherwise.
+
+The coefficient of interest is $\beta_3$, which captures the interaction between CEO age and crisis years. This term models whether the effect of CEO age on firm performance differs during times of economic distress versus normal times. When $Crisis = 0$, the marginal effect of CEO age is captured by $\beta_1$, reflecting its influence in stable periods. When $Crisis = 1$, the effect is given by $\beta_1 + \beta_3$, allowing for a change in CEO age influence during downturns. Thus, $\beta_3$ directly isolates the difference in the CEO age-performance relationship between normal and crisis conditions.
+
+The vector of control variables $X$ includes measures of firm financial structure and macroeconomic conditions. Specifically, we control for firm size, debt-to-equity ratio, current ratio, market capitalization, share price, price-to-earnings ratio, revenue, GDP, CPI, and the federal funds effective interest rate. These controls account for differences in leverage, liquidity, valuation, innovation activity, and exposure to broader economic conditions that could independently affect firm performance. The selection of control variables follows the framework proposed by Lee, Chen, and Ning (2017), who identify key firm-level characteristics that influence organizational resilience during periods of economic downturn.
+
+Given the inconclusive findings in the existing literature regarding the direction of CEO age effect during crisis, we test the following null and alternative hypotheses:
+
+```math
+\begin{aligned}
+H_0 : \beta_3 = 0 \quad &\text{(CEO age has no differential effect on firm performance during crises compared to stable times)} \\
+H_a : \beta_3 \neq 0 \quad &\text{(The effect of CEO age on firm performance differs significantly during crisis periods compared to stable times)}
+\end{aligned}
+```
+
+To strengthen the empirical analysis and assess the robustness of the aggregate results, we perform additional analysis by splitting the sample along several key dimensions. This approach allows us to investigate the conditions under which CEO age may exert a stronger or weaker influence on firm performance. Specifically, we estimate models for:
+
+**Sectoral Split**: Oil and technology sectors are analyzed independently to account for industry-specific leadership dynamics and structural characteristics.
+
+**Crisis-Specific Split**: Regressions are performed separately for each crisis episode distinguishing between pre-crisis period, crisis year(s) and post-crisis recovery phase to examine whether the CEO age effect varies across these phases and crises.
+
+**Firm Size Split**: Firms are categorized into small, medium, and large groups based on terciles of the number of employees. This accounts for potential differences in organizational flexibility and resource availability across firm sizes.
+
+**CEO Age Group Split**: CEOs are classified into three age brackets—young, middle-aged, and old—following established breakpoints in the literature (Serfling, 2014; Cline & Yore, 2015). This stratification enables the detection of non-linear effects in the relationship between age and performance.
+
+These additional analyses serve two primary purposes: first, to verify the consistency of the aggregate findings across different subgroups; and second, to provide a more granular understanding of the contexts in which CEO age plays a meaningful role in shaping firm resilience during economic crises.
+
+## 5. Empirical Results 
+
+### 5.1 Baseline Results 
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-4.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance expressed in ROE, ROA and EPS. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether CEO age has an effect on firm performance during crises relative to normal times. A dummy variable for the Technology Sector is included, which equals 1 if the firm operates in Tech industry and 0 in Oil industry. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results in Table 2 reveal a statistically significant relationship between CEO age and firm performance, with notable variation between crisis and non-crisis periods. During non-crisis years, CEO age is associated with a negative effect on ROA: specifically, the ROA model (Column 2) shows that a one-year increase in CEO age, on average, is associated with a 0.10 percentage point decrease in ROA (significant at the 1% level), ceteris paribus. This finding suggests that younger CEOs are linked to higher asset efficiency during stable economic periods. In contrast, CEO age does not exhibit a statistically significant main effect on ROE or EPS outside of crisis periods.
+
+The interaction term between CEO age and crisis periods is positive and statistically significant across all three models, indicating that the relationship between CEO age and firm performance meaningfully shifts during periods of economic distress. In the ROA model, the interaction coefficient is 0.281 (significant at the 1% level), implying that during crisis years, each additional year of CEO age is associated with a 0.281 percentage point increase in ROA. When combining the main effect and the interaction effect, the result of 0.181 suggests that older CEOs may be better positioned to maintain or improve firm asset efficiency during downturns, effectively reversing the pattern observed in stable periods.
+
+A similar pattern is observed for ROE, where the interaction term is 0.344 (significant at the 10% level), and for EPS, where the interaction coefficient is 0.018 (significant at the 5% level). Although the effect sizes vary across performance metrics, the consistent statistical significance of the interaction terms across all three models provides robust evidence that CEO age moderates the impact of crisis conditions on firm outcomes.
+
+The technology sector dummy variable is positive and statistically significant in both the ROE and ROA models, with coefficients of 7.845 and 3.456, respectively (both significant at the 1% level). This indicates that, on average, technology firms outperform oil firms on these financial metrics, regardless of crisis conditions. The result aligns with sectoral characteristics where technology firms may benefit from higher growth potential, greater flexibility and stronger investor confidence (Yadav, Prabhu, and Chandy, 2007). In contrast, the sector effect is not statistically significant in the EPS model.
+
+The aggregate results highlight three key insights. First, younger CEOs appear to be associated with better firm performance in stable periods, particularly in terms of asset utilization (ROA).
+
+Second, older CEOs demonstrate a relative advantage during periods of economic crisis, supporting the view that experience, accumulated knowledge and perhaps risk aversion contribute positively to firm resilience under adverse conditions (Chowdhury & Fink, 2017; Serfling, 2014). This shift underscores the importance of leadership adaptability depending on macroeconomic circumstances. 
+
+Third, the consistent significance of the CEO age-crisis interaction across all three performance indicators indicates that leadership characteristics play a critical role in shaping firm outcomes during external shocks. The evidence suggests that experience-based leadership, proxied by CEO age, becomes particularly valuable when firms face uncertainty and disruption.
+
+Finally, the strong performance of technology firms in the ROE and ROA models highlights potential sectoral advantages that may stem from industry-specific factors such as innovation capacity, growth orientation or market positioning. If performance is already high in tech firms due to structural or industry-specific factors, the marginal effect of CEO age might be smaller or statistically insignificant.
+
+The next section presents sub-sample analyses to explore whether these aggregate findings hold across different crisis episodes, sectors, firm sizes and CEO age groups.
+
+### 5.2 Additional Analysis 
+
+#### 5.2.1 Sectoral Analysis 
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-5.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance in the Oil industry. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether the effect of CEO age on firm performance differs during crises relative to normal times in the Oil industry. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results for the oil sector, presented in Table 3, show that most of the statistically significant relationships between CEO age and firm performance are concentrated within this sector. During non-crisis periods, CEO age has a negative and significant effect on both ROE and ROA. Specifically, a one-year increase in CEO age is associated with a 0.397 percentage point decrease in ROE and a 0.46 percentage point decrease in ROA (both significant at the 1% level). These findings suggest that, in stable periods, younger CEOs tend to deliver stronger performance outcomes in the oil industry.
+
+However, during crisis periods, the relationship reverses sharply. The interaction term between CEO age and crisis is positive and statistically significant across all three performance metrics. In the ROA model, the interaction coefficient is 0.943 (significant at the 1% level), indicating that older CEOs contribute to higher asset efficiency when the firm is operating under economic distress. Similarly, the ROE interaction effect is 1.645 (significant at the 1% level), and the EPS model shows a positive interaction of 0.063 (also significant at the 1% level). These results imply that experience, proxied by age, becomes a valuable leadership asset in navigating firms through challenging economic conditions in the oil sector.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-6.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance in the Tech industry. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether the effect of CEO age on firm performance differs during crises relative to normal times in the Tech industry. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+In contrast, the results for the technology sector, shown in Table 4, provide little evidence of a significant relationship between CEO age and firm performance, either in stable periods or during crises. The interaction terms between CEO age and crisis are statistically insignificant across all three models, indicating that CEO age does not appear to play a meaningful moderating role in the performance of technology firms during economic downturns.
+
+Additionally, the main effect of CEO age is mostly insignificant, with the exception of a small positive association with ROE (coefficient of 0.189, significant at the 10% level) during normal times. However, this effect is not observed in the ROA or EPS models, and no significant age-crisis interaction emerges. The R-squared values for the technology sector models are also lower than those observed in the oil sector, despite the smaller number of observations relative to the technology sector, suggesting that CEO age and the included controls account for less variation in performance outcomes in technology industry.
+
+**Interpretation of Sectoral Differences** 
+
+These sectoral analyses highlight that the significant CEO age effects observed in the aggregate model are primarily driven by the oil sector. Despite having fewer observations, the oil sector exhibits consistent and significant relationships between CEO age, crisis conditions and firm performance across all three financial metrics. This pattern may reflect the different operational demands, leadership expectations and decision-making environments across industries. In particular, the capital-intensive, cyclical nature of the oil industry may place a higher premium on leadership experience and crisis management skills compared to the innovation-driven and rapidly changing technology sector, where adaptability and risk-taking may matter more than accumulated experience (Sumbal et al., 2017).
+
+These findings underscore the importance of sectoral context when evaluating executive characteristics and their influence on firm outcomes, particularly during periods of economic uncertainty.
+
+#### 5.2.2 Crisis-Specific Analysis 
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-7.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance during and around 2001 Recession. The first row reports the effect of CEO age in the pre-crisis period starting with the earliest year in the dataset (1997–2000). The coefficient for During Crisis captures the relative change in firm performance during the 2001 recession (2001) compared to the pre-crisis baseline. Similarly, Post-Crisis reflects the relative change in performance in the post-crisis period (2002–2006) before the onset of the global financial crisis in 2007. The interaction terms, CEO Age * During Crisis and CEO Age * Post-Crisis, capture whether the effect of CEO age on firm performance differs during and after the 2001 recession, relative to the pre-crisis period. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results for the 2001 recession, shown in Table 5, indicate that CEO age has a significant and positive effect on firm performance specifically during the crisis period. In the ROE model, the interaction term between CEO age and crisis is 1.454 and statistically significant at the 1% level. In the ROA model, the corresponding interaction term is 1.155, also significant at the 1% level. These coefficients suggest that, during the 2001 recession, each additional year of CEO age was associated with a 1.454 percentage point increase in ROE and a 1.155 percentage point increase in ROA, relative to younger CEOs. In contrast, the EPS model does not show a statistically significant interaction effect, indicating that CEO age did not have a measurable impact on this particular market-based performance metric during the recession. The absence of significant CEO age effects in the pre- and post-crisis period across all three models suggests that the leadership advantage associated with older CEOs was concentrated specifically within the crisis years.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-8.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance during and around the global financial crisis. The first row reports the effect of CEO age in the pre-crisis period starting with the year immediately following the 2001 recession (2002–2006). The coefficient for During Crisis captures the relative change in firm performance during the crisis (2007-2009) compared to the pre-crisis baseline. Similarly, Post-Crisis reflects the change in performance in the post-crisis period (2010–2019) before the onset of Covid-19 in 2020 relative to pre-crisis years. The interaction terms, CEO Age * During Crisis and CEO Age * Post-Crisis, capture whether the effect of CEO age on firm performance differs during and after the global financial crisis, relative to the pre-crisis period. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The global financial crisis exhibits a markedly different pattern, shown in the middle panel of Table 6. During the crisis period, the interaction between CEO age and crisis is not statistically significant across any of the three models. These findings suggest that CEO age did not confer any measurable advantage in navigating firm performance through the global financial crisis. Interestingly, during the post-crisis recovery phase, the ROA model shows a significant negative interaction term of –0.253, significant at the 5% level. This result implies that older CEOs may have been less effective in adapting firm operations during the recovery from the financial crisis, potentially due to risk aversion or slower adjustment strategies. The absence of positive effects during the crisis itself, combined with negative effects in the post-crisis phase, distinguishes the global financial crisis from the other two downturns analyzed.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-9.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance during and around the Covid-19 crisis. The first row reports the effect of CEO age in the pre-crisis period starting with the year immediately following the global financial crisis (2010-2019). The coefficient for During Crisis captures the relative change in firm performance during the crisis (2020) compared to the pre-crisis baseline. Similarly, Post-Crisis reflects the change in performance in the post-crisis period (2021-2023) relative to pre-crisis years. The interaction terms, CEO Age * During Crisis and CEO Age * Post-Crisis, capture whether the effect of CEO age on firm performance differs during and after Covid-19 crisis, relative to the pre-crisis period. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The COVID-19 pandemic results in the right panel of Table 7, show a partial reemergence of the positive CEO age effect. In the ROA model, the interaction term between CEO age and crisis is 0.271, significant at the 5% level. This suggests that older CEOs were associated with improved asset efficiency during the pandemic period, though the effect size is smaller than that observed during the 2001 recession. The ROE model shows a positive but statistically insignificant interaction, while the EPS model again shows no significant effect. Notably, the positive CEO age effect persists into the post-crisis phase of the pandemic for ROA, where the interaction term remains significant at 0.194. This indicates that the experience advantage of older CEOs may have continued to contribute positively to firm outcomes as firms navigated the early stages of pandemic recovery.
+
+**Interpretation of Crisis Differences**
+
+The crisis-specific analysis reveals several important patterns. First, the beneficial effect of CEO age on firm performance is not uniform across crises. It is strongest during the 2001 recession, reappears in the COVID-19 period to a lesser extent and is entirely absent during the global financial crisis.
+
+Second, the nature of the crisis appears to play a critical role in shaping the effectiveness of CEO experience. The 2001 recession was characterized by sector-specific shocks, particularly in technology and capital-intensive industries, where leadership stability and experience may have been particularly valuable. In contrast, the global financial crisis, as a systemic financial collapse, may have required a different set of leadership qualities, such as adaptability and rapid repositioning, rather than experience alone. The COVID-19 pandemic, with its emphasis on operational disruption and supply chain instability, may have again favored experience-based judgment, though not as strongly as in the 2001 recession.
+
+Third, across all three crisis episodes, EPS consistently shows no significant relationship with CEO age, either during or after crises. This suggests that market-based measures of performance may be less sensitive to leadership characteristics than metrics such as ROA and ROE, or that other factors external to firm management, such as investor sentiment or accounting decisions, may play a dominant role in shaping EPS outcomes.
+
+Taken together, these results emphasize the importance of contextual factors in evaluating the role of executive experience in firm performance. CEO age enhances firm resilience under certain types of economic shocks, particularly those that affect operations and require steady leadership, but may not provide an advantage—and may even hinder performance—in crises that demand rapid strategic shifts. These findings suggest that leadership selection and succession planning should consider not only general CEO characteristics but also the specific nature of risks that firms are likely to face.
+
+### 5.2.3 Firm Size Analysis 
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-10.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance across small-sized firms. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether CEO age has an effect on firm performance during crises relative to normal times. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results for small firms indicate that CEO age has a significant and negative association with firm performance during stable periods in the first two regressions (Table 8). In the ROE model, each additional year of CEO age is associated with a 0.382 percentage point decrease in ROE, significant at the 1% level. Similarly, the ROA model shows a negative coefficient of 0.239, significant at the 5% level. The EPS model does not show a significant main effect for CEO age. However, during crisis periods, the interaction between CEO age and crisis is positive and statistically significant across all three models. In particular, the interaction term is 0.87 for ROE (significant at the 5% level), 0.584 for ROA (significant at the 1% level), and 0.031 for EPS (significant at the 5% level). These findings suggest that the leadership experience associated with older CEOs becomes particularly valuable in small firms during periods of economic distress, enhancing both operational efficiency and market performance.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-11.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance across medium-sized firms. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether CEO age has an effect on firm performance during crises relative to normal times. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results for medium-sized firms present a different pattern (Table 9). During non-crisis periods, CEO age is positively associated with ROE, with a coefficient of 0.61, significant at the 1% level. This suggests that, in medium-sized firms, older CEOs may contribute positively to shareholder returns even outside of crisis conditions. However, the interaction terms between CEO age and crisis periods are not statistically significant across any of the three performance measures, indicating that the crisis-moderating effect of CEO age observed in small firms does not extend to medium-sized firms.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-12.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between CEO age and firm performance across large-sized firms. The first row reports the effect of CEO age during normal times. The second row presents the estimated impact of crisis periods on firm performance. The third row captures the interaction between CEO age and crisis periods, indicating whether CEO age has an effect on firm performance during crises relative to normal times. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+For large firms, the analysis reveals no statistically significant effect of CEO age on performance, either during stable periods or during crises (Table 10). Neither the main CEO age coefficients nor the interaction terms reach conventional significance levels across ROE, ROA, or EPS models. The absence of any meaningful CEO age effect in large firms suggests that the organizational complexity and resource depth characteristic of large enterprises may dilute the direct influence of individual executive traits such as age. Alternatively, large firms may rely more heavily on institutional processes and diversified management teams, reducing the marginal impact of CEO-specific characteristics on firm-level outcomes.
+
+**Interpretation of Firm Size Differences** 
+
+These findings provide important nuance to the overall analysis by demonstrating that the effect of CEO age on firm performance is conditional on firm size. The leadership experience associated with older CEOs appears to play a particularly significant role in small firms during periods of crisis, where resources may be constrained and leadership decisions directly shape firm survival and performance. In contrast, among medium-sized firms, CEO age contributes positively to shareholder returns during stable periods, but this advantage does not translate into crisis-specific resilience. For large firms, the lack of significant effects suggests that structural factors may outweigh individual leadership characteristics in determining financial outcomes. 
+
+Taken together, these results suggest that the role of CEO age in shaping firm performance is neither uniform nor unconditional but instead varies systematically with firm size and economic context. Experience-driven leadership appears to be most consequential in settings where organizational scale does not provide inherent buffers against external shocks, reinforcing the view that executive characteristics are particularly salient when firms are small and more vulnerable to crisis dynamics. 
+
+### 5.2.4 CEO Age Group Analysis 
+
+To capture potential non-linear effects of CEO age on firm performance, this section employs regressions based on CEO age groups.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-13.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between crisis periods and firm performance among firms led by young CEOs. The first row reports the estimated effect of crisis periods on firm performance. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+The results for firms led by young CEOs (36–58 years) reveal that crisis periods are associated with significant declines in financial performance (Table 11). Specifically, during crises, ROA decreases by 4.796 percentage points relative to non-crisis periods (significant at the 1% level), while EPS decreases by 0.381 points (significant at the 10% level). Although the ROE model shows a negative coefficient (–5.286), it is not statistically significant. These findings suggest that firms led by younger CEOs are more vulnerable to adverse economic conditions, particularly in operational and market-facing measures of performance.
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-14.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between crisis periods and firm performance among firms led by middle-aged CEOs. The first row reports the estimated effect of crisis periods on firm performance. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+A similar pattern emerges among firms led by middle-aged CEOs (59–65 years). The crisis coefficients are negative and statistically significant across all three performance metrics (Table 12). During crisis periods, ROE decreases by 8.866 percentage points (significant at the 1% level), ROA decreases by 3.446 percentage points (significant at the 1% level), and EPS decreases by 0.195 points (significant at the 5% level).
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-15.png "title")
+  <em>*Note*: This table summarizes the results of regressions examining the relationship between crisis periods and firm performance among firms led by older CEOs. The first row reports the estimated effect of crisis periods on firm performance. All regressions include controls for firm-level financial characteristics and macroeconomic conditions. Standard errors are reported in parentheses.</em>
+</div>
+
+In contrast, firms led by older CEOs (66–88 years) display a markedly different pattern. The crisis coefficients across all three models—ROE (–2.276), ROA (–0.943), and EPS (–0.063)—are not statistically significant at conventional levels (Table 13). This absence of significant negative effects suggests that firms led by older CEOs are relatively better insulated from the adverse financial impacts of economic crises. Although the coefficients are negative, their small magnitudes and lack of statistical significance indicate that older leaders may help stabilize firm performance under economic stress, consistent with the broader findings from the aggregate and sub-sample analyses.
+
+**Interpretation of CEO Age Differences**
+
+Several broader conclusions can be drawn from these results. First, the financial performance of firms during crises deteriorates more sharply when led by younger and middle-aged CEOs compared to those led by older executives. This pattern reinforces the idea that leadership experience, as proxied by CEO age, serves as a moderating factor in how firms respond to external economic shocks. Second, the results suggest that the protective effect of CEO age is non-linear: the stabilizing benefits become apparent only at older ages, while younger and middle-aged CEOs do not seem to confer similar resilience.
+
+Moreover, these findings complement the earlier sectoral and firm size splits, emphasizing that CEO characteristics become particularly salient under conditions of economic distress and that experience may be a critical asset for maintaining organizational performance during turbulent times. The fact that no significant adverse performance effects are observed among firms with older CEOs highlights the potential value of leadership experience in crisis management.
+
+## 6. Conclusion
+
+This study explores the relationship between CEO age and firm performance during periods of economic crisis, focusing on publicly listed U.S. firms in the oil and technology sectors between 1997 and 2023. Using firm-level financial indicators—ROA, ROE, and EPS—we examine how CEO age interacts with both firm-specific and macroeconomic factors to shape outcomes across crisis and non-crisis periods.
+
+Our findings reveal a context-dependent relationship: older CEOs are associated with stronger firm performance during crisis periods, suggesting that experience, strategic conservatism, and crisis navigation skills become valuable assets under economic stress. In contrast, younger CEOs appear more effective during stable periods, likely due to greater risk tolerance, adaptability, and a propensity for innovation. This dynamic illustrates that CEO age is not intrinsically beneficial or detrimental, but its value is contingent on the prevailing economic environment.
+
+The effect is particularly pronounced in the oil sector, which, despite comprising a smaller share of the overall sample, disproportionately drives the results. The capital-intensive and highly cyclical nature of the oil industry demands long-term strategic planning, disciplined risk management, and deep sectoral knowledge—traits more commonly found in seasoned executives. Older CEOs in these firms demonstrate stronger performance under crisis conditions, likely due to their ability to manage commodity volatility, navigate complex regulatory landscapes, and apply experience from prior downturns.
+
+These patterns are most evident during the 2001 Recession and the COVID-19 pandemic, both of which triggered severe disruptions in global demand and supply chains—particularly in energy markets. During these crises, smaller oil firms led by older CEOs performed notably better, indicating that experienced leadership played a critical role in buffering firms against external shocks.
+
+Overall, the interaction between CEO age, firm size, and sectoral context is central to understanding firm resilience. While smaller firms are generally more vulnerable during economic downturns, those in the oil sector led by older CEOs appear better equipped to manage such challenges through conservative financial strategies and established industry networks. These findings underscore the importance of aligning executive characteristics with firm needs and environmental conditions when assessing leadership effectiveness during crises.
+
+## 7. Limitations
+
+While this study offers new insights into the relationship between CEO age and firm performance during economic crises, several limitations should be acknowledged, offering important directions for future research.
+
+First, the analysis cannot fully address concerns of endogeneity. Although CEO age is a relatively exogenous characteristic compared to many qualitative traits, it is still possible that unobserved factors simultaneously influence both CEO characteristics and firm performance. In particular, omitted variable bias remains a concern, as the analysis does not control for detailed CEO-level attributes such as educational background, industry-specific expertise, prior crisis management experience, or CEO tenure. These factors may independently shape firm outcomes and could be correlated with CEO age, potentially biasing the estimated effects. Future research could address this concern using methods such as instrumental variable (IV) estimation, propensity score matching, or firm fixed effects models to better isolate the causal impact of CEO age.
+
+Second, simultaneity bias may arise if firm performance and CEO age influence each other. For instance, firms facing strategic challenges may preferentially appoint older, more experienced CEOs to navigate turbulent periods, leading to reverse causality concerns. Although the crisis coding helps to mitigate some endogeneity concerns by introducing exogenous macroeconomic shocks, the observational nature of the data ultimately limits the ability to infer strict causality.
+
+Third, there may be spillover effects of crises into adjacent years that are not fully captured by the binary crisis indicator. Economic downturns often have lingering impacts beyond the officially designated crisis periods, potentially diluting or confounding the estimation of crisis-specific leadership effects. Future research could address this by applying models that allow for gradual recovery dynamics or multiple years of crisis-related treatment, by constructing continuous measures of economic stress (e.g., VIX index, GDP deviation from trend).
+
+Fourth, the geographic scope of the analysis is limited to publicly listed firms in the United States. While this provides a relatively homogeneous institutional and regulatory context, it restricts the external validity of the findings. CEO characteristics, firm governance practices, and responses to crises may vary significantly across countries with different legal systems, cultural attitudes toward leadership, or economic structures. Expanding the analysis to an international sample would allow for testing whether the observed patterns are generalizable across different environments.
+
+Fifth, the study's crisis coverage is necessarily limited by the available time series. Although it spans three major downturns—the 2001 recession, the global financial crisis, and the COVID-19 pandemic—a longer observation window incorporating additional crisis episodes, such as geopolitical crises or sector-specific disruptions, would enhance the ability to distinguish how different types of crises interact with leadership characteristics. Longitudinal studies extending into earlier decades or incorporating sector-specific shocks (e.g., oil price crashes, tech bubbles) would provide more variation in crisis types and improve generalizability.
+
+In addition to these core limitations, two further considerations warrant mention. CEO age is treated as a linear measure throughout most specifications, yet the true relationship between experience and decision-making effectiveness may be non-linear or threshold-based. Although the sub-sample analysis by CEO age group partially addresses this, future studies could explore non-parametric models or spline regressions to capture more complex patterns. Additionally, the analysis focuses on financial performance metrics, but does not consider non-financial outcomes such as employee retention, innovation rates or stakeholder satisfaction, which may also be affected by leadership during crises.
+
+Taken together, these limitations suggest that while the findings provide valuable evidence on the contextual role of CEO age, they should be interpreted with appropriate caution. Further research incorporating richer CEO-level data, broader geographic samples, longer time horizons, and alternative outcome measures would be valuable in deepening our understanding of leadership effectiveness in times of economic distress.
+
+**Author Contributions**
+
+Arina Kenbayeva contributed to the formulation of the research motivation and conducted an in-depth literature review. She participated in data collection, wrote the conclusion, and contributed to the preparation and delivery of the project presentation.
+
+Arina Jermitsova contributed to data collection and was responsible for developing the methodology. She interpreted the results of the empirical models and contributed to the preparation and delivery of the project presentation.
+
+## Bibliography:
+
+1. Aebi, V., Sabato, G., & Schmid, M. (2012). Risk management, corporate governance, and bank performance in the financial crisis. *Journal of Banking & Finance*, 36(12), 3213–3226.
+
+2. Baker, M., & Wurgler, J. (2002). Market timing and capital structure. *Journal of Finance*, 57(1), 1–32.
+3. Bartram, S. M., & Bodnar, G. M. (2009). No place to hide: The global crisis in equity markets in 2008/2009. *Journal of International Money and Finance*, 28(8), 1246–1292.
+
+4. Basu, S. (1983). The relationship between earnings' yield, market value and return for NYSE common stocks: Further evidence. *Journal of Financial Economics*, 12(1), 129–156.
+
+5. Beltratti, A., & Stulz, R. M. (2012). The credit crisis around the globe: Why did some banks perform better? *Journal of Financial Economics*, 105(1), 1–17.
+
+6. Bertrand, M., & Schoar, A. (2003). Managing with style: The effect of managers on firm policies. *Quarterly Journal of Economics*, 118(4), 1169–1208.
+
+7. Binks, M. R., & Ennew, C. T. (1996). Growing firms and the credit constraint. *Small Business Economics*, 8(1), 17–25.
+8. Cai, J., Liu, Y., Qian, Y., & Yu, M. (2015). Information asymmetry and corporate governance. *Quarterly Journal of Finance*, 5(2), 1550006.
+
+9. Chen, M.-P., Chen, P.-F., & Lee, C.-C. (2014). Frontier stock market integration and the global financial crisis. *North American Journal of Economics and Finance*, 29, 84–103.
+
+10. Chowdhury, I. R., & Fink, D. (2017). How does CEO age affect firm risk? *Asia-Pacific Journal of Financial Studies*, 46(2), 202–230.
+
+11. Clarke, G. R. G., Cull, R., & Kisunko, G. (2012). External finance and firm survival in the aftermath of crisis: Evidence from Eastern Europe and Central Asia. *Journal of Comparative Economics*, 40(3), 372–392.
+
+12. Cline, B. N., & Yore, A. S. (2016). Silverback CEOs: Age, experience, and firm value. *Journal of Empirical Finance*, 38, 751–770.
+
+13. Custódio, C., Ferreira, M. A., & Matos, P. (2013). Generalists versus specialists: Lifetime work experience and chief executive officer pay. *Journal of Financial Economics*, 108(2), 471–492.
+
+14. Cutler, D. M., Poterba, J. M., & Summers, L. H. (1991). Speculative dynamics. *Review of Economic Studies*, 58(3), 529–546.
+
+15. Danielson, M. G., & Dowdell, T. D. (2001). The return-stages valuation model and the expectations within a firm's P/B and P/E ratios. *Financial Management*, 30(2), 93–124.
+
+16. Dietrich, A., & Wanzenried, G. (2011). Determinants of bank profitability before and during the crisis: Evidence from Switzerland. *Journal of International Financial Markets, Institutions and Money*, 21(3), 307–327.
+
+17. Forbes, K. J. (2002). How do large depreciations affect firm performance? *IMF Staff Papers*, 49(Special Issue), 214–238.
+
+18. Gomez-Mejia, L. R. (1992). Structure and process of diversification, compensation strategy, and firm performance. *Strategic Management Journal*, 13(5), 381–397.
+
+19. Graham, J. R., Harvey, C. R., & Puri, M. (2013). Managerial attitudes and corporate actions. *Journal of Financial Economics*, 109(1), 103–121.
+
+20. Graham, J. R., Harvey, C. R., & Rajgopal, S. (2005). The economic implications of corporate financial reporting. *Journal of Accounting and Economics*, 40(1-3), 3–73.
+
+21. Hall, B. H., & Helmers, C. (2024). *The Economics of Innovation and Intellectual Property*. Oxford University Press.
+
+22. Hambrick, D. C., & Mason, P. A. (1984). Upper echelons: The organization as a reflection of its top managers. *Academy of Management Review*, 9(2), 193–206.
+
+23. Harwati, L. N. (2013). Crisis management: Determining specific strategies and leadership style for effective outcomes. *Asian Journal of Management Science and Education*, 2(2), 170–180.
+
+24. Karras, G. (1996). Why are the effects of money-supply shocks asymmetric? *Journal of Macroeconomics*, 18(1), 87–100.
+
+25. Lee, C.-C., Chen, M.-P., & Ning, S.-L. (2017). Why did some firms perform better in the global financial crisis? *Economic Research-Ekonomska Istraživanja*, 30(1), 1339–1366.
+
+26. Mulder, C., Perrelli, R., & Rocha, M. (2012). External vulnerability, balance sheet effects, and the institutional framework—Lessons from the Asian crisis. *Contemporary Economic Policy*, 30(1), 124–144.
+
+27. National Bureau of Economic Research. (n.d.). Business Cycle Dating Committee, National Bureau of Economic Research. [Business Cycle Dating | NBER](https://www.nber.org/research/business-cycle-dating "title")
+
+28. Rosales, A., Fernández-Ardèvol, M., & Svensson, J. (Eds.). (2024). Book Notes: Digital Ageism: How It Operates and Approaches to Tackling It. *European Journal of Communication*, 39(2), 208–209.
+
+29. Serfling, M. A. (2014). CEO age and the riskiness of corporate policies. *Journal of Corporate Finance*, 25, 251–273.
+
+30. Sheikh, M., Bokaei, M. N., Alijani, H., Saadatmand, M., Hosseini Fard, S. M., & Sharahi, I. C. (2011). Investigating relationship between consumer price index and producer price index and dividend per share (Case Study: Accepted Firms in Tehran Stock Exchange in 2001–2009). *Australian Journal of Business and Management Research*, 1(7), 121–128.
+
+31. Sumbal, M. S., Tsui, E., & See-to, E. W. K. (2017). The dynamics of knowledge retention and aging workforce in the oil and gas industry. *Journal of Knowledge Management*, 21(4), 907–924.
+
+32. U.S. Bureau of Labor Statistics. (2023). Labor force statistics by industry. [U.S. Bureau of Labor Statistics](https://www.bls.gov/ "title")
+
+33. Yadav, M. S., Prabhu, J. C., & Chandy, R. K. (2007). Managing the future: CEO attention and innovation outcomes. *Journal of Marketing*, 71(4), 84–101.
+
+# A. Appendix
+
+Appendix provides supplementary information used in the empirical analysis. Section A.1 defines and explains the control variables included in the regression models, detailing their measurements and relevance. Section A.2 presents a graph- ical summary of NBER-designated crisis periods, illustrating the timing of major economic downturns using U.S. unemployment rate data.
+
+## A.1 Control Variables Description
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-16.png "title")
+  <em>*Note*: This table provides definitions and measurement details for the control variables used in the regression analyses. It outlines what each variable measures and explains its relevance for assessing firm performance or macroeconomic context. Firm-level controls include financial indicators, such as Debt-to-Equity, Current Ratio, Price-to-Earnings Ratio, R&D Expenditures, Revenue, Market Capitalization, Price per Share. Macroeconomic variables, such as GDP, CPI, and the Federal Funds Effective Rate, are included to account for broader economic conditions. These controls help isolate the effect of CEO age and crisis periods by adjusting for other relevant factors.</em>
+</div>
+
+## A.2 NBER-Designaed Crisis Periods
+
+<div style={{ textAlign: "center" }}>
+![Alt text](/images/projects/capstone-17.png "title")
+  <em>*Note*: This figure presents a graphical summary of NBER-designated crisis periods with U.S. unemployment rate data from 1978 to 2024. The y-axis shows the unemployment rate as a percentage of the labor force, while the x-axis displays the timeline in years. The blue line traces monthly U.S. unemployment rates, and shaded areas represent periods officially classified as recessions by the National Bureau of Economic Research (NBER). The figure provides visual context for the timing and severity of economic downturns analyzed in the study.</em>
+</div>

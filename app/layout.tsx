@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import { cn } from '@/lib/utils'
 
 import './globals.css'
+import 'katex/dist/katex.min.css' 
 import Providers from '@/components/providers'
 import Header from '@/components/header'
 import Footer from '@/components/footer'

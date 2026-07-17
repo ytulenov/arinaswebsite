@@ -123,13 +123,13 @@ Our study delved into a selection of the top 1000 films to discern the factors t
 The final theoretical model that we have developed is Model 3, 
 
 ```math
-IMDB_Rating = β_0 + β_1Released_Year + β_2Runtime + β_3First_Genre + β_4No_of_Votes + β_5Log_Gross + β_6Certificate + β_7Director + β_8Star1 + ϵ
+\text{IMDB\_Rating} = \beta_0 + \beta_1\text{Released\_Year} + \beta_2\text{Runtime} + \beta_3\text{First\_Genre} + \beta_4\text{No\_of\_Votes} + \beta_5\text{Log\_Gross} + \beta_6\text{Certificate} + \beta_7\text{Director} + \beta_8\text{Star1} + \epsilon
 ```
 
 The estimated model that we obtained was, 
 
 ```math
-IMDB_Rating = 22.52* + -0.007Released_Year* + 0.003Runtime* +  β_3First_Genre + 0.00 No_of_Votes* + 0.003Log_Gross + β_6Certificate + β_7Director + β_8Star1 + ϵ
+\text{IMDB\_Rating} = 22.52^{*} - 0.007\,\text{Released\_Year}^{*} + 0.003\,\text{Runtime}^{*} + \beta_3\text{First\_Genre} + 0.00\,\text{No\_of\_Votes}^{*} + 0.003\,\text{Log\_Gross} + \beta_6\text{Certificate} + \beta_7\text{Director} + \beta_8\text{Star1} + \epsilon
 ```
 
 The final model had an adjusted R² of 0.76. We arrived at this model after testing multiple linear regression models, exploring several nonlinear relationships, and putting away the option of a model with time-fixed effects.
@@ -139,7 +139,7 @@ On a 5% significance level, the release year, runtime, several genres, number of
 Taking the example of a movie directed in 2014, with a runtime of 200 minutes, with a Genre of Adventure, with 100,000 votes, 400,000, earnings, unrestricted age certification, directed by Christopher Nolan, and Starring Brad Pitt, compared to the reference genres and reference directors and actors, we can predict an IMDB Rating of: 
 
 ```math
-22.52 - 0.07(2014) + 0.003(200) + 0.168 + 0.003(log(400,000)) + 0.076 - 1.77 + 0.691 = 8.2 
+22.52 - 0.007(2014) + 0.003(200) + 0.168 + 0.003\log(400{,}000) + 0.076 - 1.77 + 0.691 = 8.2
 ```
 
 The first econometric challenge in building the model was working with several variables that were categorical instead of numerical. Other papers grouped variables like genres, and directors into one effect with one coefficient. However, it did not make sense for us to group all the genres, directors, and actors into one variable. Perhaps, a more insightful way would be to collect metadata on each director and actor such as age, race, and popularity, which would have more explanatory power. For interpretation purposes, we kept each category and regressed it as a dummy. 
