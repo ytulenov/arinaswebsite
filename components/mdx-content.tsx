@@ -21,11 +21,11 @@ export default function MDXContent(props: MDXRemoteProps) {
       {...props}
       components={{ ...components, ...(props.components || {}) }}
       options={{
+        blockJS: false,   // our MDX is trusted local content, not user-supplied
         mdxOptions: {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex]
         },
-        // merge with any options passed in props if you have them
         ...(props.options || {})
       }}
     />
