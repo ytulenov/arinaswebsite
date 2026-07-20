@@ -3,6 +3,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import { highlight } from 'sugar-high'
 import Counter from '@/components/counter'
+import Gallery from '@/components/gallery'
 
 function Code({ children, className, ...props }: any) {
   // Don't let sugar-high touch math blocks (remark-math handles them)
@@ -12,7 +13,8 @@ function Code({ children, className, ...props }: any) {
 
 const components = {
   code: Code,
-  Counter
+  Counter,
+  Gallery
 }
 
 export default function MDXContent(props: MDXRemoteProps) {

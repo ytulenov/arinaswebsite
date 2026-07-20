@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
+import Gallery from '@/components/gallery'
 import { getPosts, getPostBySlug } from '@/lib/posts'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import { notFound } from 'next/navigation'
@@ -23,7 +24,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   }
 
   const { metadata, content } = post
-  const { title, image, author, publishedAt } = metadata
+  const { title, image, gallery, galleryAspect, author, publishedAt } = metadata
 
   return (
     <section className='pb-24 pt-32'>
@@ -36,22 +37,24 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <span>Back to posts</span>
         </Link>
 
-        
-        {image && (
-          <div className="relative mb-6 w-full aspect-[2864/1786] bg-muted/50">
+        {gallery?.length ? (
+          <Gallery
+  images={gallery.map((src: string) => ({ src, alt: title || '' }))}
+  aspect={galleryAspect || '3 / 4'}
+/>
+        ) : image ? (
+          <div className='relative mb-6 aspect-[2864/1786] w-full bg-muted/50'>
             <Image
               src={image}
               alt={title || ''}
               fill
-              sizes="(max-width: 768px) 100vw, 80vw"
-              className="object-contain" // Adds padding within container
+              sizes='(max-width: 768px) 100vw, 80vw'
+              className='object-contain'
               quality={90}
               priority
             />
           </div>
-        )}
-
-
+        ) : null}
 
         <header>
           <h1 className='title'>{title}</h1>
@@ -60,12 +63,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </p>
         </header>
 
-        <main className='prose mt-16 dark:prose-invert  max-w-6xl'>
+        <main className='prose mt-16 max-w-6xl dark:prose-invert'>
           <MDXContent source={content} />
         </main>
 
-        <footer className='mt-16'>
-        </footer>
+        <footer className='mt-16' />
       </div>
     </section>
   )

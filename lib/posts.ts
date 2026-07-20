@@ -13,10 +13,12 @@ export type PostMetadata = {
   title?: string
   summary?: string
   image?: string
+  gallery?: string[]
+  galleryAspect?: string
   author?: string
   publishedAt?: string
   slug: string
-}  
+}
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
